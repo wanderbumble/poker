@@ -1,0 +1,36 @@
+.playing-card {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 100px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 25px;
+    cursor: pointer;
+
+    &-remove {
+        border-color: blue;
+    }
+
+    &-graphic {
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    &-graphic--bottom {
+        transform: rotate(180deg);
+        margin-right: 10px;
+        margin-bottom: 6px;
+    }
+
+    &-suit {
+        margin-left: 5px;
+        font-size: 32px;
+        font-family: 'hoyle_playing_cardsregular';
+    }
+
+    &-suit--red {
+        color: red;
+    }
+}
