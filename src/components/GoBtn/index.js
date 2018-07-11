@@ -46,7 +46,7 @@ class GoBtn extends Component {
 
     render() {
         return (
-            <button className="btn-go" disabled={this.props.goDisabled} onClick={this.showMeTheMoney}>Go</button>
+            !this.props.goDisabled && <button className="btn-go" onClick={this.showMeTheMoney}>Go</button>
         );
     }
 }

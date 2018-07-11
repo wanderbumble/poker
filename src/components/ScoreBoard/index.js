@@ -13,20 +13,21 @@ class ScoreBoard extends Component {
     calculateScore() {
         const normalizedHandArray = normalizeHand(this.props.handArray);
         const score = normalizedHandArray && processHand(normalizedHandArray);
-        
+
         return score;
     }
 
     render() {
 
         return (
-            <div className='score-board'>Score { this.calculateScore() }</div>
+            !this.props.dealDisabled && <div className='score-board'>Score { this.calculateScore() }</div>
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
+        dealDisabled: state.DealBtn.dealDisabled,
         handArray: state.PokerTable.handArray
     };
 }
@@ -34,5 +35,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)(ScoreBoard);
 
 ScoreBoard.propTypes = {
+    dealDisabled: PropTypes.bool,
     handArray: PropTypes.array
 };

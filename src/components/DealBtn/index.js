@@ -39,7 +39,7 @@ class DealBtn extends Component {
     render() {
 
         return (
-            <button className="btn-deal" disabled={this.props.dealDisabled} onClick={this.dealNewDeck}>Deal</button>
+            !this.props.dealDisabled && <button className="btn-deal" onClick={this.dealNewDeck}>Deal</button>
         );
     }
 }
