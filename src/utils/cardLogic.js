@@ -86,26 +86,30 @@ export const normalizeHand = handArray => {
 };
 
 /**
- * Returns a string that we will be able to use to check what kind of pairs
- * are in the current hand.
- * @param {array} card - This is number of the current card we are checking.
- * @param {array} handArray - This is the normalized hand array of cards.
- * @returns {string} This will be a one or two digit number as a string.
+ * Returns a score based on the number of pairs found.
+ * @param {array} userHand - This is the normalized hand array of cards.
+ * @returns {number} This will be a 100, 200 or 0 based on pairs found.
  */
-export const checkForPairs = (card, handArray) => {
-    let count = 0;
-    let index = 0;
-
-    do {
-        index = handArray.indexOf(card, index) + 1;
-        if(index == 0){
-            break;
+export const checkForPairs = userHand => {
+    let cardPairFound = 0;
+    let matchesSearched = [];
+    userHand.map( cardNum => {
+        if (matchesSearched.indexOf(cardNum) == -1) {
+            matchesSearched.push(cardNum);
         } else {
-            count ++;
+            return;
         }
-    } while(index < handArray.length);
 
-    return count;
+        const matchesFound = userHand.filter(cardNumber => cardNum === cardNumber);
+
+        if (matchesFound.length === 2 || matchesFound.length === 3) {
+            cardPairFound++;
+        } else if (matchesFound.length === 4) {
+            cardPairFound = cardPairFound + 2;
+        }
+    });
+
+    return 100 * cardPairFound;
 };
 
 /**
@@ -123,26 +127,8 @@ export const processHand = normalizedHandArray => {
         return 500;
     }
 
-    //Check for pairs.
-    let occurrencesFound = [];
-    let pairsFound = '';
-    for(let i = 0; i < userHand.length; i++){
-        let occurrences = checkForPairs(userHand[i], userHand);
-        if(occurrences > 1 && occurrencesFound.indexOf(userHand[i]) == -1){
-            pairsFound += occurrences;
-            occurrencesFound.push(userHand[i]);
-        }
-    }
-
-    if (pairsFound === '2' || pairsFound === '3') {
-        //We found one pair or three of a kind.
-        return 100;
-    } else if (pairsFound === '22' || pairsFound === '23' || pairsFound === '4') {
-        //We found two pairs, one pair and three of a kind, or four of a kind.
-        return 200;
-    }
-
-    return 0;
+    //Check for pairs. If none are found we will get a 0 score back.
+    return checkForPairs(userHand);
 };
 
 export default {

@@ -199,24 +199,52 @@ describe('normalizeHand', () => {
  * checkForPairs
  */
 describe('checkForPairs', () => {
-    const cardNum = 3;
-    const handArray = [3, 2, 11, 3, 8];
+    const userHand = [3, 2, 11, 3, 8];
 
-    it('entering an array with one pair matching the card value should return a 2', () => {
+    it('entering an array with one pair should return a score of 100', () => {
         expect(cardLogic
-            .checkForPairs(cardNum, handArray))
-            .toEqual(2);
+            .checkForPairs(userHand))
+            .toEqual(100);
     });
 });
 
 describe('checkForPairs', () => {
-    const cardNum = 8;
-    const handArray = [8, 2, 8, 3, 8];
+    const userHand = [8, 2, 8, 3, 8];
 
-    it('entering an array with three matching the card value should return a 3', () => {
+    it('entering an array with three matching should return a score of 100', () => {
         expect(cardLogic
-            .checkForPairs(cardNum, handArray))
-            .toEqual(3);
+            .checkForPairs(userHand))
+            .toEqual(100);
+    });
+});
+
+describe('checkForPairs', () => {
+    const userHand = [8, 8, 8, 3, 3];
+
+    it('entering an array with one pair and three matching should return a score of 200', () => {
+        expect(cardLogic
+            .checkForPairs(userHand))
+            .toEqual(200);
+    });
+});
+
+describe('checkForPairs', () => {
+    const userHand = [8, 8, 8, 8, 3];
+
+    it('entering an array with four matching should return a score of 200', () => {
+        expect(cardLogic
+            .checkForPairs(userHand))
+            .toEqual(200);
+    });
+});
+
+describe('checkForPairs', () => {
+    const userHand = [1, 5, 8, 9, 3];
+
+    it('entering an array with no pairs should return a score of 0', () => {
+        expect(cardLogic
+            .checkForPairs(userHand))
+            .toEqual(0);
     });
 });
 
