@@ -21,7 +21,7 @@ export class DealBtn extends Component {
         const newDeckArray = [];
 
         //Create a new deck of 52 cards.
-        for (var i=0; i< 52 ;i++) {
+        for (let i=0; i< 52 ;i++) {
             newDeckArray.push(i+1);
         }
 
