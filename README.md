@@ -1,2 +1,2 @@
 # Run locally
-To run the project locally type 'npm run dev' in a Terminal window
+Run npm-install if you have not already. Then to run the project locally type 'npm run dev' in a Terminal window
