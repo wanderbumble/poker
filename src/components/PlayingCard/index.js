@@ -9,7 +9,7 @@ import { normalizeCard,
 import PropTypes from 'prop-types';
 import './styles/index.scss';
 
-class PlayingCard extends Component {
+export class PlayingCard extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -24,7 +24,7 @@ class PlayingCard extends Component {
         }
 
         let removeArray = this.props.removeArray;
-        const cardNumberIndex = removeArray.indexOf(this.props.cardNumber);
+        const cardNumberIndex = removeArray.indexOf(cardNumber);
 
         if (cardNumberIndex !== -1) {
             removeArray = removeArray.filter(cardNum => cardNum !== cardNumber);
@@ -38,7 +38,7 @@ class PlayingCard extends Component {
     render() {
         const cardNumber = this.props.cardNumber;
         const removeArray = this.props.removeArray;
-        const cardNumberIndex = removeArray.indexOf(cardNumber);
+        const cardNumberIndex = removeArray && removeArray.indexOf(cardNumber);
         const removeCardClass = cardNumberIndex >= 0 ? 'playing-card-remove' : '';
         const normalizeCardNumber = normalizeCard(cardNumber);
         const cardSymbol = symbolForCardNumber(normalizeCardNumber);

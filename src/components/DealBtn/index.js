@@ -6,7 +6,7 @@ import { actions as pokerActions } from '../PokerTable/redux/actions';
 import { actions as goActions } from '../GoBtn/redux/actions';
 import PropTypes from 'prop-types';
 
-class DealBtn extends Component {
+export class DealBtn extends Component {
     constructor(props) {
         super(props);
         this.state = {};

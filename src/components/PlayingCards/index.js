@@ -6,7 +6,7 @@ import PlayingCard from '../PlayingCard';
 import PropTypes from 'prop-types';
 import './styles/index.scss';
 
-class PlayingCards extends Component {
+export class PlayingCards extends Component {
     constructor(props) {
         super(props);
         this.state = {};

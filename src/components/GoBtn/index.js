@@ -7,7 +7,7 @@ import { actions as dealActions } from '../DealBtn/redux/actions';
 import { actions as playingCardsActions } from '../PlayingCards/redux/actions';
 import PropTypes from 'prop-types';
 
-class GoBtn extends Component {
+export class GoBtn extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -38,10 +38,11 @@ class GoBtn extends Component {
             const newCardsArray = deckArray.slice(0, removeArray.length);
 
             this.props.setHandArray(newHandArray.concat(newCardsArray));
-            this.props.setDealDisabled(false);
-            this.props.setGoDisabled(true);
-            this.props.setRemoveArray([]);
         }
+
+        this.props.setDealDisabled(false);
+        this.props.setGoDisabled(true);
+        this.props.setRemoveArray([]);
     }
 
     render() {
