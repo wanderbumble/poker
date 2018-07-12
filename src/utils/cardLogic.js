@@ -1,3 +1,8 @@
+/**
+ * Returns the color of the suit if it should be red.
+ * @param {number} cardNum - This is the un-normalized number of the card.
+ * @returns {string} We will check this to see if the card should be red.
+ */
 export const cardColor = cardNum => {
     if (cardNum >= 0 && cardNum <= 13) {
         //Diamonds
@@ -8,6 +13,11 @@ export const cardColor = cardNum => {
     }
 };
 
+/**
+ * Returns the letter that will be used by the hoyt font to give us the suit symbol.
+ * @param {number} cardNum - This is the un-normalized number of the card.
+ * @returns {string} We will use this so the correct suit shows up.
+ */
 export const suitForCard = cardNum => {
     if (cardNum >= 0 && cardNum <= 13) {
         //Diamonds
@@ -24,6 +34,11 @@ export const suitForCard = cardNum => {
     }
 };
 
+/**
+ * Returns the letter in the event the cars is an Ace, Jack, Queen or King.
+ * @param {number} cardNum - This is the normalized number of the card.
+ * @returns {string} We will use this so the correct icon shows on the card.
+ */
 export const symbolForCardNumber = cardNum => {
     if (cardNum === 1) {
         return 'A';
@@ -38,6 +53,12 @@ export const symbolForCardNumber = cardNum => {
     return cardNum;
 };
 
+/**
+ * Returns an normailzed card number. For example 14 would become a 1.
+ * And in turn be an Ace.
+ * @param {number} cardNum - This is the un-normalized number of the card.
+ * @returns {number} We will use number to build a normalized hand.
+ */
 export const normalizeCard = cardNum => {
     if (cardNum >= 0 && cardNum <= 13) {
         return cardNum;
@@ -50,6 +71,12 @@ export const normalizeCard = cardNum => {
     }
 };
 
+/**
+ * Returns an array with the card numbers normailzed. For example 14 would become a 1.
+ * And in turn be an Ace. A 26 would be a King and be turned to a 13.
+ * @param {array} handArray - This is the un-normalized array of cards.
+ * @returns {array} We will use this array to check for pairs or flushes.
+ */
 export const normalizeHand = handArray => {
     if (handArray.length === 0) {
         return 0;
@@ -58,12 +85,19 @@ export const normalizeHand = handArray => {
     return handArray.map( cardNum => normalizeCard(cardNum) );
 };
 
-export const checkForPairs = (n, handArray) => {
+/**
+ * Returns a string that we will be able to use to check what kind of pairs
+ * are in the current hand.
+ * @param {array} card - This is number of the current card we are checking.
+ * @param {array} handArray - This is the normalized hand array of cards.
+ * @returns {string} This will be a one or two digit number as a string.
+ */
+export const checkForPairs = (card, handArray) => {
     let count = 0;
     let index = 0;
 
     do {
-        index = handArray.indexOf(n, index) + 1;
+        index = handArray.indexOf(card, index) + 1;
         if(index == 0){
             break;
         } else {
@@ -74,6 +108,11 @@ export const checkForPairs = (n, handArray) => {
     return count;
 };
 
+/**
+ * Returns a number that will be the users score based on their hand.
+ * @param {array} normalizedHandArray - This is the normalized hand array of cards.
+ * @returns {number} This will the users score.
+ */
 export const processHand = normalizedHandArray => {
     let userHand = normalizedHandArray.sort((a, b) => a - b);
 
