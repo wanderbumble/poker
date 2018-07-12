@@ -15,6 +15,11 @@ export class PlayingCard extends Component {
         this.state = {};
     }
 
+    /**
+     * When clicking on a playing card this function is called to determine
+     * if we add or remove it from an array. That array will then be used to
+     * determine what cards should be discarded when the user clicks the Go button. 
+     */
     updateRemoveArray = cardNumber => e => {
         e.preventDefault;
 

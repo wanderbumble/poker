@@ -138,7 +138,7 @@ export const processHand = normalizedHandArray => {
         //We found one pair or three of a kind.
         return 100;
     } else if (pairsFound === '22' || pairsFound === '23' || pairsFound === '4') {
-        //We found two pairs or four of a kind.
+        //We found two pairs, one pair and three of a kind, or four of a kind.
         return 200;
     }
 

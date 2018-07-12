@@ -12,6 +12,10 @@ export class DealBtn extends Component {
         this.state = {};
     }
 
+    /**
+     * When the user clicks the Deal button this function is called. This will
+     * give the user five new cards from a newly created deck.
+     */
     dealNewDeck = e => {
         e.preventDefault;
         const newDeckArray = [];

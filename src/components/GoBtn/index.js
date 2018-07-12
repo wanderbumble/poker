@@ -13,6 +13,10 @@ export class GoBtn extends Component {
         this.state = {};
     }
 
+    /**
+     * When the user clicks the Go button this function is called. This will
+     * give the user their final hand.
+     */
     showMeTheMoney = e => {
         e.preventDefault;
 
