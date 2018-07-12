@@ -1,28 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { DealBtn } from '../index';
+import { PlayingCards } from '../index';
 import { actionTypes } from '../redux/actions';
 import reducer from '../redux/reducer';
 
-describe('DealBtn shallow render', () => {
+describe('PlayingCards shallow render', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<DealBtn/>, div);
+        ReactDOM.render(<PlayingCards/>, div);
     });
 });
 
-describe('DealBtn action types', () => {
-    it('defines an action type for SET_DEAL_DISABLED', () => {
-        const type = actionTypes.SET_DEAL_DISABLED;
+describe('PlayingCards action types', () => {
+    it('defines an action type for SET_REMOVE_ARRAY', () => {
+        const type = actionTypes.SET_REMOVE_ARRAY;
         expect(type).toBeDefined();
     });
 });
 
-describe('DealBtn reducer', () => {
+describe('PlayingCards reducer', () => {
     it('should return the initial state', () => {
         const initialState = reducer(undefined, {});
         const expectedState = {
-            dealDisabled: false
+            removeArray: []
         };
         expect(initialState).toEqual(expectedState);
     });
