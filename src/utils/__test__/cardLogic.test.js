@@ -199,21 +199,23 @@ describe('normalizeHand', () => {
  * checkForPairs
  */
 describe('checkForPairs', () => {
+    const cardNum = 3;
     const handArray = [3, 2, 11, 3, 8];
 
-    it('entering an array with one pair should return a 2', () => {
+    it('entering an array with one pair matching the card value should return a 2', () => {
         expect(cardLogic
-            .checkForPairs(3, handArray))
+            .checkForPairs(cardNum, handArray))
             .toEqual(2);
     });
 });
 
 describe('checkForPairs', () => {
+    const cardNum = 8;
     const handArray = [8, 2, 8, 3, 8];
 
-    it('entering an array with three matching should return a 3', () => {
+    it('entering an array with three matching the card value should return a 3', () => {
         expect(cardLogic
-            .checkForPairs(8, handArray))
+            .checkForPairs(cardNum, handArray))
             .toEqual(3);
     });
 });
